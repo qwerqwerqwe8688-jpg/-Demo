@@ -68,36 +68,36 @@ GPU: 可选，用于加速特征提取
 ## 安装部署
 ### 环境配置
 #### 创建虚拟环境
-‘conda create -n datafabric python==3.9'
-'conda activate datafabric'
+    conda create -n datafabric python==3.9
+    conda activate datafabric'
 
 #### 安装依赖包
-pip install -r requirements.txt
+    pip install -r requirements.txt
 
 ### 使用流程
 阶段一：数据编织准备
 #### 构建统一数据索引
-python data_fabric.py --root datasets --out fabric_index.csv #--root为你的数据集目录
+    python data_fabric.py --root datasets --out fabric_index.csv #--root为你的数据集目录
 输出：标准化元数据索引文件
 
 阶段二：特征统一提取
 #### 提取深度视觉特征
-python feature_extractor.py --index fabric_index.csv --out fabric_features.npy
+    python feature_extractor.py --index fabric_index.csv --out fabric_features.npy
 输出：高维特征向量集合
 
 阶段三：聚类分析
 #### 自动聚类分析
-python train_classifier.py --index fabric_index.csv --feats fabric_features.npy --model out_clf.joblib
+    python train_classifier.py --index fabric_index.csv --feats fabric_features.npy --model out_clf.joblib
 输出：聚类模型和样本标签
 
 阶段四：UMAP生成
 #### 本地生成图片
-python cluster_visualize.py --index fabric_index.csv --feats fabric_features.npy
+    python cluster_visualize.py --index fabric_index.csv --feats fabric_features.npy
 输出：本地图片umap.png
 
 阶段四：结果探索
 #### 启动交互式分析界面
-python app_gradio.py --index fabric_index.csv --feats fabric_features.npy --model out_clf.joblib
+    python app_gradio.py --index fabric_index.csv --feats fabric_features.npy --model out_clf.joblib
 访问: http://127.0.0.1:7860
 
 ## 核心算法
@@ -174,28 +174,6 @@ SAR 与光学图像的协同分析
 数据内在结构探索
 
 特征空间关系分析
-
-## 注意事项
-### 数据要求
-图像文件应可正常读取
-
-建议数据规模 > 1000 样本以获得有意义的聚类结果
-
-混合数据源时注意分辨率和比例的差异
-
-### 性能考虑
-特征提取阶段计算密集，建议批量处理
-
-大规模数据聚类需要足够内存
-
-可视化界面响应时间与数据规模相关
-
-### 结果解释
-聚类结果为数据驱动，需结合领域知识解释
-
-UMAP 投影保持拓扑结构但不保证距离意义
-
-自动选择的 K 值需通过领域验证
 
 
 
