@@ -68,8 +68,8 @@ GPU: 可选，用于加速特征提取
 ## 安装部署
 ### 环境配置
 #### 创建虚拟环境
-conda create -n datafabric python==3.9
-conda activate datafabric
+‘<conda create -n datafabric python==3.9>'
+'<conda activate datafabric>'
 
 #### 安装依赖包
 pip install -r requirements.txt
@@ -199,4 +199,4 @@ UMAP 投影保持拓扑结构但不保证距离意义
 
 
 
-Fabric 系统通过数据编织技术，为多源异构数据分析提供了演示的解决方案，支持从数据集成到知识发现的完整工作流。
+**Fabric 系统通过数据编织技术，为多源异构数据分析提供了演示的解决方案，支持从数据集成到知识发现的完整工作流。**
